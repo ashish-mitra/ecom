@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+    <div class="container">
+
+        {% if results %}
+            {% for painting in results %}
+               
+                 
+                <div class="card">
+                    <img src="/media/{{ painting.image }}" alt="{{ painting.title }}">
+                    <div class="rating">
+                        <p>{{ painting.rating }} | <i class="fa-solid fa-star"></i></p>
+                    </div>
+                    <div class="card-content">
+                        <p class="title">{{ painting.title }}</p>
+                        <p class="price">{{ painting.category }}</p>
+                        <p class="type"><a href="{% url 'product' pk=painting.id %}">₹{{ painting.price }}</a></p>
+                    </div>
+                </div>
+
+            {% endfor %}
+        
+        {% else %}
+        <p>No paintings found matching your query.</p>
+        {% endif %}
+
+</div>
+</center>
+{% endblock %}

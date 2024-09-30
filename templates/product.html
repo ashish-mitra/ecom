@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="xyz">
+    <main>
+        <div class="content">
+            <div class="container">
+                <img id="displayed-image" src="/media/{{ painting.image }}" alt="Product image" class="Product_image">
+            </div>
+            <div class="text">
+                <h1>{{ painting.title }}</h1>
+                <div class="rating-pro">
+                    <span class="stars">★★★★★</span>
+                    <span class="reviews">{{ painting.rating }}</span>
+                </div>
+    
+                <p>
+                    <b>{{ painting.category }}</b> <br>
+                    {{ painting.description }}
+                </p>
+    
+                <div class="price">
+                    <span class="discount">25%</span>
+                    <span class="current-price">₹{{ painting.price }}</span>
+                    <div class="original">
+                        <span id="flex" class="mrp">M.R.P:</span>
+                        <span id="flex" class="original-price">₹15,000</span>
+                        <span class="stock">In stock</span>
+                    </div>
+                </div>
+                <button ><a href="{% url 'add_to_cart' painting.id %}">Add to Cart</a></button>
+                <button id="buy">Buy Now</button>
+                
+    
+                
+                <div>
+                    <h3 id="bestoffer">BEST OFFERS</h3>
+                    <ul>
+                        <li>Get 20% off on SBI Credit Card</li>
+                        <li>Coupon Code: WEEKLYOFF15</li>
+                        <li>Coupon Discount: 15%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+</div>
+
+
+
+
+{% endblock %}

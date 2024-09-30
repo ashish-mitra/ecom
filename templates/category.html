@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="container__left">
+      <h2>{{category.name}}</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptatibus alias, sint eos doloribus eaque
+        nam ea, consequatur cum officia, pariatur laboriosam. Labore dolor, velit soluta eum dolore in molestias?</p>
+
+    </div>
+
+    <div class="container__right">
+      <div class="imgs">
+        <img src="img1.jpeg" alt="" class="tent-1">
+        <img src="img2.jpeg" alt="" class="tent-2">
+        <img src="img3.jpeg" alt="" class="tent-3">
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+  <div class="text1">
+    <h1>NEW ARRIVALS</h1>
+  </div>
+
+
+
+  <div class="category1">
+    {% for p in painting %}
+    {% if p.is_new == True %}
+    <div class="Cimgs">
+        <img src="/media/{{ p.image }}" alt="">
+        <div class="content">
+          <h3>{{ p.title }}</h3>
+          <h5>{{ p.price }}/-</h5>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  
+  <div class="container">
+    <div class="container__left">
+      <h1>OUR</h1>
+      <h2>NEW COLLECTION</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci voluptatibus alias, sint eos doloribus eaque
+        nam ea, consequatur cum officia, pariatur laboriosam. Labore dolor, velit soluta eum dolore in molestias?</p>
+      <div class="container__btn">
+        <button class="btn">BUY NOW</button>
+        <button class="btn2">ADD TO CART</button>
+      </div>
+    </div>
+
+    <div class="container__right">
+      <div class="imgs">
+        <img src="img3.jpeg" alt="" class="tent-5">
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="text1">
+    <h1>BEST SELLING</h1>
+  </div>
+
+
+  <div class="category1">
+    
+    {% for p in painting %}
+    {% if p.is_selling == True %}
+    <div class="Cimgs">
+        <img src="/media/{{ p.image }}" alt="">
+        <div class="content">
+          <h3>{{ p.title }}</h3>
+          <h5>{{ p.price }}/-</h5>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+   
+
+  </div>
+
+{% endblock %}
