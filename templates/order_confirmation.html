@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Order Confirmation</h1>
+
+<p>Order ID: {{ order.id }}</p>
+<p>Date: {{ order.date_ordered }}</p>
+
+<h3>Shipping Address:</h3>
+<p>{{ order.shipping_address }}</p>
+<p>{{ order.shipping_city }}, {{ order.shipping_state }} - {{ order.shipping_zip }}</p>
+
+<h3>Order Items:</h3>
+<ul>
+    {% for item in order_items %}
+    <li>{{ item.painting.title }} - ${{ item.painting.price }} x {{ item.quantity }} = ${{ item.get_total }}</li>
+    {% endfor %}
+</ul>
+
+<p>Total: ${{ order.get_cart_total }}</p>
+<a href="{% url 'home' %}">Go to Profile</a>
+{% endblock %}

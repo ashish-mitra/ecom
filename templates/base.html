@@ -67,8 +67,13 @@
                 
                 <div class="profile"><i class="fa-regular fa-user"></i></div>
                 <div class="btns">
+                    {% if user.is_authenticated %}
+                    <button class="login-btn log"><a href="{% url 'profile' %}">profile</a></button>
+                    <button class="login-btn"><a href="{% url 'view_cart' %}">cart</a></button>
+                    {% else %}
                     <button class="login-btn log"><a href="{% url 'login' %}">login</a></button>
                     <button class="login-btn"><a href="{% url 'signup' %}">sign up</a></button>
+                    {% endif %}
                 </div> 
             </div>  
         </div>

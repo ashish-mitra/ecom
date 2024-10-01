@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Your Orders</h1>
+
+{% if orders %}
+  <ul>
+    {% for order in orders %}
+      <li>
+        <h2>Order ID: {{ order.id }} (Date: {{ order.date_ordered }})</h2>
+        <ul>
+          {% for item in order.orderitem_set.all %}
+            <li>{{ item.painting.title }} - ${{ item.painting.price }} x {{ item.quantity }} = ${{ item.get_total }}</li>
+          {% endfor %}
+        </ul>
+        <p>Total: ${{ order.get_cart_total }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>You have not placed any orders yet.</p>
+{% endif %}
+
+{% endblock %}
