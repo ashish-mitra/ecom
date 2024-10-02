@@ -7,6 +7,11 @@
     font-family: "Poppins";
 }
 
+body{
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 header{
     width: 100%;
     height: 100px;
@@ -322,6 +327,31 @@ margin-left: 30px;
 
 }
 
+.profile-desk{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+    
+}
+
+.x{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.x a{
+    text-decoration: none;
+    color: black;
+    font-weight: 300;
+}
+
 
 
 /* ---------------footer------------- */
@@ -398,3 +428,103 @@ margin-left: 30px;
     cursor: pointer;
 }
 
+.profile-desk{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+    
+}
+
+.x{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.x a{
+    text-decoration: none;
+    color: black;
+    font-weight: 300;
+}
+
+.p-link{
+    width: 50%;
+    background-color: #ffffff73;
+    backdrop-filter: blur(6px);
+    position: absolute;
+    right: 0;
+    /* left: 700px; */
+    top: 80;
+    transition-duration: 0.5s;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* background-color: red; */
+    transform: translateX(300px);
+}
+
+.open{
+    opacity: 1;
+    /* display: block; */
+    transform: translateX(0px);
+}
+
+
+.p-link a{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px 0px;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    align-items: center;
+}
+
+.m-link{
+    width: 50%;
+    background-color: #ffffff73;
+    backdrop-filter: blur(6px);
+    position: absolute;
+    left: 0;
+    /* left: 700px; */
+    top: 80;
+    transition-duration: 0.5s;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* background-color: red; */
+    z-index: 9999;
+    transform: translateX(-300px);
+    visibility: hidden;
+}
+
+.m-link a{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px 0px;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    align-items: center;
+}
+
+.mopen{
+    opacity: 1;
+    /* display: block; */
+    transform: translateX(0px);
+    visibility: visible;
+}

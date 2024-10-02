@@ -6,10 +6,24 @@
     <title>Document</title>
 </head>
 <body>
-    {{ user.username }}
-
-    <a href="{% url 'logout' %}">logout</a>
-    <a href="{% url 'view_cart' %}">cart</a>
-    <a href="{% url 'view_orders' %}">My Orders</a>
+  
 </body>
 </html>
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- {% for msg in messages %}
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Hey !</strong> {{msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %} -->
+
+<h1> welcome, {{ user.username }} </h1>
+
+<a href="{% url 'logout' %}">logout</a>
+<a href="{% url 'view_cart' %}">cart</a>
+<a href="{% url 'view_orders' %}">My Orders</a>
+{% endblock %}
