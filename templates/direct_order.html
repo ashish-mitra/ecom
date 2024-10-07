@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Buy Now</h1>
+
+<!-- Display painting details -->
+<h2>{{ painting.title }}</h2>
+<p>Price: ${{ painting.price }}</p>
+
+<!-- Address form -->
+<form action="{% url 'direct_buy' painting.id %}" method="POST">
+    {% csrf_token %}
+    
+    <label for="address">Shipping Address:</label>
+    <input type="text" id="address" name="address" required>
+    
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required>
+    
+    <label for="state">State:</label>
+    <input type="text" id="state" name="state" required>
+    
+    <label for="zip">zip code:</label>
+    <input type="text" id="postal_code" name="zip" required>
+    
+    <button type="submit" class="btn btn-primary">Buy Now</button>
+</form>
+
+{% endblock %}

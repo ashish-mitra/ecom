@@ -45,6 +45,9 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('order_confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
     path('orders/', views.view_orders, name='view_orders'),
+    path('buy-now/<int:painting_id>/', views.direct_order, name='direct_buy'),
     
 ]+ static(settings. MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.DEBUG is False:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

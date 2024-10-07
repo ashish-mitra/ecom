@@ -185,3 +185,38 @@ def view_orders(request):
     orders = Order.objects.filter(user=request.user).order_by('-date_ordered')
     
     return render(request, 'orders.html', {'orders': orders})
+
+
+@login_required
+def direct_order(request, painting_id):
+    painting = get_object_or_404(Painting, id=painting_id)
+
+    if request.method == 'POST':
+        
+
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        zip_code = request.POST['zip']
+
+
+        order = Order.objects.create(
+            user=request.user,
+            shipping_address=address,
+            shipping_city=city,
+            shipping_state=state,
+            shipping_zip=zip_code
+        )
+
+
+        order_item = OrderItem.objects.create(order=order, painting=painting, quantity=1)
+        
+
+        order.complete = True
+        # order.total_price = order_item.get_total()
+        order.save()
+
+
+        return redirect('order_confirmation', order_id=order.id)
+
+    return render(request, 'direct_order.html', {'painting': painting})
