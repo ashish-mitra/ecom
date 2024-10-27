@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block page_css %}
+<link rel="stylesheet" href="/static/css/home.css">
+
+{% endblock %}
+
+
 {% block content %}
 <!-- {% for msg in messages %}
 
@@ -9,6 +15,23 @@
   </div>
 {% endfor %} -->
 
+<div class="hero-section">
+  <h2>Discover the Essence of Indian Art</h2>
+  <div class="hero-img">
+      <div class="hero-img-1">
+          <a href="#">explore our collection →</a>
+          <img src="/static/images/painting1.jpg" alt="">
+      </div>
 
-<h1>home</h1>
+      <div class="hero-img-2">
+          <img src="/static/images/painting2.jpg" alt="">
+      </div>
+
+      <div class="hero-img-3">
+          <img src="/static/images/painting5.jpg" alt="">
+          <p>Lorem ipsum dolor sitamet consectetur adipisicing elit. Doloribus corporis nulla magnam architecto, et aliquam! Omnis error molestias ea laborum.</p>
+      </div>
+  </div>
+</div>
+
 {% endblock %}
