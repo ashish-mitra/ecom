@@ -3,19 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/base.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="shortcut icon" href="/static/images/art logo.jpg" type="image/x-icon">
     <title>Art Heritage India</title>
-    <meta name="description" content="Shop authentic Indian paintings at ArtHeritageIndia.store. Discover unique hand-painted artworks to adorn your walls. Browse our collection of heritage-inspired paintings, modern art, and custom pieces.">
+    <meta name="description"
+        content="Shop authentic Indian paintings at ArtHeritageIndia.store. Discover unique hand-painted artworks to adorn your walls. Browse our collection of heritage-inspired paintings, modern art, and custom pieces.">
 
-    <meta name="keywords" content="Indian paintings, buy art online, wall art, custom paintings, heritage art, online art store, ashish website",>
+    <meta name="keywords"
+        content="Indian paintings, buy art online, wall art, custom paintings, heritage art, online art store, ashish website"
+        ,>
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <script src="https://kit.fontawesome.com/cc840d8450.js" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
@@ -28,13 +34,17 @@
 
 
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
 
     <!-- custom css  -->
 
     <link rel="stylesheet" href="/static/css/base.css">
     <link rel="stylesheet" href="/static/css/searches.css">
-    
+
     {% block page_css %}
     <!-- <link rel="stylesheet" href="/static/css/category.css"> -->
     <!-- <link rel="stylesheet" href="/static/css/category.css"> -->
@@ -77,7 +87,7 @@
 
                     <div class="profile" id="p-menu"><i class="fa-regular fa-user"></i></div>
                     <div class="btns">
-                    
+
                         {% if user.is_authenticated %}
                         <!-- <button class="login-btn log"><a href="{% url 'profile' %}">profile</a></button>
                     <button class="login-btn"><a href="{% url 'view_cart' %}">cart</a></button> -->
@@ -131,9 +141,9 @@
         <a href="#">CATEGORY</a>
         <a href="#">ABOUT</a>
         <a href="#">CONTACT US</a>
-        
+
     </div>
-    
+
 
 
     {% block content %}
@@ -151,7 +161,7 @@
             p_links.classList.toggle('open');
         });
 
-        
+
 
         m_menu.addEventListener('click', () => {
             m_links.classList.toggle('mopen');
@@ -204,6 +214,14 @@
         </div>
     </footer> -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="/static/js/main.js"></script>
 </body>
 
 </html>

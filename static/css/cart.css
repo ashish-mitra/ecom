@@ -1,0 +1,1229 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Edu+TAS+Beginner&family=Inconsolata:wght@200..900&family=PT+Serif+Caption:ital@0;1&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin:0%;
+    padding:0%;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 450;
+    font-size: 1em;
+
+}
+
+.cart-text h2 {
+    font-family: 'PT serif';
+    font-size: 40px;
+    font-weight: 500;
+    margin: 30px 0 30px 132px;
+}
+
+.container {
+    margin: 30px;
+    /* border: 2px solid black; */
+}
+
+.item-box1,
+.item-box2,
+.item-box3 {
+    height: 150px;
+    width: 85%;
+    position: relative;
+    margin: 20px;
+    margin-left: 100px;
+    background-color: white;
+}
+
+.img1,
+.img2,
+.img3 {
+    height: 120px;
+    width: 100px;
+    position: absolute;
+    margin: 15px;
+    background-color: rgb(141, 102, 52);
+}
+
+.img1 img {
+    height: 120px;
+    width: 100%;
+    background-size: contain;
+}
+
+.img2 img {
+    height: 120px;
+    width: 100%;
+    background-size: contain;
+}
+
+.img3 img {
+    height: 120px;
+    width: 100%;
+    background-size: contain;
+}
+
+.text {
+    position: absolute;
+    margin-left: 150px;
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.item-name h6 {
+    font-family: 'poppins';
+    font-size: 1em;
+    font-weight: 400;
+
+}
+
+.item-type h6 {
+    font-family: 'poppins';
+    font-size: 0.8em;
+    font-weight: 300;
+    margin-left: 15px;
+
+}
+
+.price {
+    position: absolute;
+    margin-left: 400px;
+    margin-top: 60px;
+    font-family: 'poppins';
+    font-size: 1.4em;
+    font-weight: 400;
+}
+
+.item-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+    position: absolute;
+    margin-left: 550px;
+    /* font-size: 20px; */
+}
+
+.buy-now {
+    font-size: 1em;
+    padding: 10px 35px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    /* margin-right: 20px; */
+
+}
+
+.available {
+    font-size: 1em;
+    padding: 10px 35px;
+    background-color: white;
+    border: 2px solid black;
+    margin-right: 20px;
+}
+
+.tick {
+    height: 25px;
+    width: 25px;
+    background-color: rgb(218, 215, 215);
+    position: absolute;
+    margin: 63px;
+    margin-left: 1000px;
+}
+
+.checkbox {
+    color: black;
+}
+
+#cross{
+    font-size: 30px;
+    position: absolute;
+    margin: 60px;
+    margin-left: 1110px;
+}
+
+.clear-all {
+    padding: 10px 45px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-left: 1200px;
+}
+
+
+/* ---------------using grid-------------- */
+/* .container2{
+    padding-top: 70px;
+    display: grid;
+    height: 90vh;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.checkout{
+    background-color: black;
+    color: white;
+    height: 90vh;
+}
+
+.recommended{
+    background-color: white;
+    height: 90vh;
+} */
+
+/* -------------------end--------------- */
+
+.container2 {
+    padding: 70px 0px;
+}
+
+.checkout {
+    background-color: rgb(0, 0, 0);
+    height: 710px;
+    flex-grow: 1;
+    flex-basis: 50;
+    font-size: 45px;
+    width: 50%;
+    float: left;
+    color: white;
+
+}
+
+.recommended {
+    background-color: rgb(255, 255, 255);
+    height: 710px;
+    flex-grow: 1;
+    flex-basis: 50;
+    font-size: 45px;
+    width: 50%;
+    float: right;
+}
+
+.checkout-container {
+
+    width: 390px;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    margin: 100px;
+    margin-left: 140px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.checkout h2 {
+    color: white;
+    font-family: 'PT serif';
+    font-size: 1em;
+    margin: 40px;
+    margin-left: 135px;
+}
+
+.checkout-container {
+    height: 220px;
+    width: 400px;
+    position: relative;
+    display: flex;
+}
+
+.name {
+    width: 200px;
+    float: left;
+    /* background-color: burlywood; */
+}
+
+.cost {
+    width: 200px;
+    float: right;
+    /* background-color: chartreuse; */
+}
+
+.checkout h5 {
+    font-size: 0.5em;
+    font-family: 'poppins';
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    /* text-align: end; */
+    /* display: inline-block; */
+}
+
+.name h5 {
+    text-align: start;
+}
+
+.cost h5 {
+    text-align: end;
+}
+
+.checkout-button {
+    padding: 10px 45px;
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+    font-size: 0.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-left: 350px;
+    border: 3px solid white;
+}
+
+.recommended h2 {
+    color: black;
+    font-family: 'PT serif';
+    font-size: 1em;
+    margin: 40px;
+    margin-left: 50px;
+}
+
+.recommended .img {
+    height: 300px;
+    width: 250px;
+    margin-left: 50px;
+    margin-right: 20px;
+    background-color: bisque;
+    float: left;
+}
+
+.img img {
+    background-size: contain;
+    height: 300px;
+    width: 250px;
+    backdrop-filter: blur(180);
+}
+
+.recommended .details {
+    float: right;
+    margin-right: 220px;
+    font-size: 25px;
+}
+
+.details h5 {
+    font-size: 1em;
+    font-family: 'poppins';
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.details h6 {
+    font-size: 0.7em;
+    font-family: 'poppins';
+    font-weight: 300;
+    margin-top: 25px;
+
+}
+
+.details p {
+    font-size: 0.8em;
+    font-family: 'poppins';
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.details h4 {
+    font-size: 0.8em;
+    font-family: 'poppins';
+    font-weight: 700;
+    margin-top: 25px;
+}
+
+.add-to-cart {
+    background-color: black;
+    color: white;
+    font-size: 0.4em;
+    padding: 10px 30px;
+    margin-top: 30px;
+    font-weight: 600;
+    position: relative;
+    margin-left: 15px;
+}
+
+
+
+
+/* -----------------responsivenes------------------------ */
+
+@media (min-width:200px) and (max-width: 320px) {
+
+    .cart-text h2 {
+        font-size: 30px;
+        margin: 30px 0 30px 32px;
+    }
+
+    .container {
+        margin: 15px;
+    }
+
+    .item-box1,
+    .item-box2,
+    .item-box3 {
+        height: 225px;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    /* 
+    .item-name h6{
+        font-size: 16px;
+    } */
+
+
+    .img1,
+    .img2,
+    .img3 {
+        margin-top: 30px;
+    }
+
+    .text {
+        margin-top: 30px;
+        margin-left: 126px;
+        font-size: 16px;
+    }
+
+    .price {
+        margin-left: 155px;
+        margin-top: 80px;
+        font-size: 1em;
+    }
+
+    .item-btns {
+        margin-top: 75px;
+        margin-left: 0px;
+        width: 63%;
+    }
+
+    .buy-now {
+        padding: 6px 13px;
+        border: 2px solid black;
+        font-size: 0.6em;
+    }
+
+    .available {
+        padding: 6px 13px;
+        font-size: 0.6em;
+        border: 2px solid black;
+        margin-right: 20px;
+    }
+
+    .tick {
+        margin: 9px;
+        margin-left: 259px;
+    }
+
+    #cross{
+        margin-left: 259px;
+        margin-top: 180px;
+    }
+
+    .clear-all {
+        font-size: 16px;
+        margin-left: 200px;
+        padding: 3px 10px;
+        width: 30%;
+    }
+
+    .container2 {
+        padding: 35px 0;
+    }
+
+    .checkout {
+        height: 305px;
+        width: 260px;
+        margin: 30px;
+        font-size: 35px;
+    }
+
+    .checkout h2 {
+        /* font-size: 30px; */
+        margin: 20px;
+        margin-left: 30px;
+    }
+
+    .checkout-container {
+        width: 235px;
+        height: 150px;
+        margin: 10px 0 10px 14px;
+    }
+
+    .checkout h5 {
+        /* font-size: 16px; */
+        margin-top: 20px;
+    }
+
+    .checkout-button {
+        margin-left: 130px;
+        /* font-size: 15px; */
+        padding: 4px 14px;
+    }
+
+    .recommended {
+        height: 305px;
+        width: 100%;
+        margin: 27px 0px 0px 0px;
+        font-size: 30px;
+    }
+
+    .recommended h2 {
+        /* font-size: 30px; */
+        margin: 15px;
+    }
+
+
+    .recommended .img {
+        height: 135px;
+        width: 100px;
+        margin-left: 15px;
+    }
+
+    .img img {
+
+        height: 135px;
+        width: 100px;
+    }
+
+
+    .recommended .details {
+        margin-right: 25px;
+        font-size: 20px;
+    }
+
+    .details h5 {
+        margin-top: 0px;
+        /* font-size: 20px; */
+    }
+
+    /* .details h6{
+        font-size: 15px;
+    }
+
+    .details p{
+        font-size: 15px;
+    } */
+
+    .add-to-cart {
+        padding: 7px 13px;
+    }
+}
+
+@media (min-width:321px) and (max-width:400px) {
+
+    .cart-text h2 {
+        font-size: 30px;
+        margin: 30px 0 30px 32px;
+    }
+
+    .container {
+        margin: 15px;
+    }
+
+    .item-box1,
+    .item-box2,
+    .item-box3 {
+        height: 225px;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+
+    .item-name h6 {
+        font-size: 18px;
+    }
+
+
+    .img1,
+    .img2,
+    .img3 {
+        margin-top: 30px;
+    }
+
+    .text {
+        margin-top: 30px;
+        margin-left: 126px;
+
+    }
+
+    .price {
+        margin-left: 155px;
+        margin-top: 80px;
+    }
+
+    .item-btns {
+        margin-top: 75px;
+        margin-left: 0px;
+        width: 63%;
+    }
+
+    .buy-now {
+        padding: 6px 13px;
+        border: 2px solid black;
+        font-size: 10px;
+    }
+
+    .available {
+        padding: 6px 13px;
+        font-size: 10px;
+        border: 2px solid black;
+        margin-right: 20px;
+    }
+
+    .tick {
+        margin: 9px;
+        margin-left: 300px;
+    }
+
+    #cross{
+        margin-left: 300px;
+        margin-top: 180px;
+    }
+
+    .clear-all {
+        font-size: 16px;
+        margin-left: 243px;
+        padding: 5px 10px;
+        width: 30%;
+    }
+
+    .container2 {
+        padding: 35px 0;
+    }
+
+    .checkout {
+        height: 305px;
+        width: 260px;
+        margin: 30px;
+        margin-left: 60px;
+    }
+
+    .checkout h2 {
+        font-size: 30px;
+        margin: 20px;
+        margin-left: 30px;
+    }
+
+    .checkout-container {
+        width: 235px;
+        height: 150px;
+        margin: 10px 0 10px 14px;
+    }
+
+    .checkout h5 {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .checkout-button {
+        margin-left: 130px;
+        font-size: 15px;
+        padding: 4px 14px;
+    }
+
+    .recommended {
+        height: 305px;
+        width: 100%;
+        margin: 27px 0px 0px 0px;
+    }
+
+    .recommended h2 {
+        font-size: 30px;
+        margin: 15px;
+    }
+
+    .recommended .img {
+        height: 135px;
+        width: 100px;
+        margin-left: 15px;
+    }
+
+    .img img {
+
+        height: 135px;
+        width: 100px;
+    }
+
+
+    .recommended .details {
+        margin-right: 25px;
+    }
+
+    .details h5 {
+        margin-top: 0px;
+        font-size: 20px;
+    }
+
+    .details h6 {
+        font-size: 15px;
+    }
+
+    .details p {
+        font-size: 15px;
+    }
+
+    .add-to-cart {
+        padding: 7px 13px;
+    }
+}
+
+@media(min-width:401px) and (max-width:500px) {
+    .cart-text h2 {
+        font-size: 40px;
+        margin: 30px 0 30px 32px;
+    }
+
+    .item-box1,
+    .item-box2,
+    .item-box3 {
+        margin-left: 3px;
+        height: 200px;
+        width: 100%;
+    }
+
+    .text {
+        margin-left: 140px;
+        margin-top: 30px;
+        font-size: 18px;
+    }
+
+    .price {
+        margin-left: 170px;
+        margin-top: 85px;
+    }
+
+    .item-btns {
+        margin-top: 68px;
+        margin-left: 2px;
+        width: 63%;
+    }
+
+    .available {
+        font-size: 13px;
+        padding: 6px 16px;
+    }
+
+    .buy-now {
+        font-size: 13px;
+        padding: 6px 16px;
+    }
+
+    .tick {
+        margin: 9px;
+        margin-left: 320px;
+    }
+
+    #cross {
+        margin-left: 320px;
+        margin-top: 155px;
+    }
+
+
+    .clear-all {
+        font-size: 18px;
+        margin-left: 268px;
+        padding: 8px 10px;
+        width: 30%;
+    }
+
+    .container2 {
+        padding: 35px 0;
+    }
+
+    .checkout {
+        height: 357px;
+        width: 348px;
+        margin: 30px;
+        margin-left: 40px;
+    }
+
+    .checkout h2 {
+        font-size: 36px;
+        margin: 19px;
+        margin-left: 44px;
+    }
+
+    .checkout-container {
+        width: 275px;
+        height: 170px;
+        margin: 10px 0 10px 40px;
+    }
+
+    .checkout h5 {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .checkout-button {
+        margin-left: 200px;
+        font-size: 15px;
+        padding: 4px 14px;
+    }
+
+
+    .recommended {
+        height: 305px;
+        width: 100%;
+        margin: 27px 0px 0px 0px;
+    }
+
+    .recommended h2 {
+        font-size: 30px;
+        margin: 15px;
+    }
+
+    .recommended .img {
+        height: 135px;
+        width: 100px;
+        margin-left: 15px;
+    }
+
+    .img img {
+
+        height: 135px;
+        width: 100px;
+    }
+
+
+    .recommended .details {
+        margin-right: 25px;
+    }
+
+    .details h5 {
+        margin-top: 0px;
+        font-size: 20px;
+    }
+
+    .details h6 {
+        font-size: 15px;
+    }
+
+    .details p {
+        font-size: 15px;
+    }
+
+    .add-to-cart {
+        padding: 7px 13px;
+    }
+}
+
+@media (min-width: 501px) and (max-width:770px) {
+    .cart-text h2 {
+        font-size: 45px;
+        margin: 30px 0 30px 45px;
+    }
+
+    .item-box1,
+    .item-box2,
+    .item-box3 {
+        width: 95%;
+        height: 200px;
+        margin-left: 10px
+    }
+
+    .img1,
+    .img2,
+    .img3 {
+        height: 150px;
+        width: 120px;
+        margin: 25px;
+    }
+
+    .img1 img,
+    .img2 img,
+    .img3 img {
+        height: 150px;
+        width: 120px;
+    }
+
+    .text {
+        position: absolute;
+        margin-left: 170px;
+        margin-top: 35px;
+    }
+
+    .item-type h6 {
+        margin-left: 25px;
+    }
+
+    .price {
+        margin-left: 200px;
+        margin-top: 95px;
+        font-size: 20px;
+
+    }
+
+    .item-btns {
+        margin-top: 10px;
+        margin-left: 265px;
+        width: 63%;
+    }
+
+    .available {
+        font-size: 14px;
+        padding: 6px 16px;
+    }
+
+    .buy-now {
+        font-size: 14px;
+        padding: 6px 16px;
+    }
+
+    .tick {
+        margin: 9px;
+        margin-left: 620px;
+    }
+
+    #cross {
+        margin-left: 620px;
+        margin-top: 155px;
+    }
+
+
+    .clear-all {
+        font-size: 16px;
+        margin-left: 510px;
+        padding: 8px 10px;
+        width: 25%;
+    }
+
+    .container2 {
+        padding: 70px 0;
+    }
+
+    .checkout {
+        background-color: rgb(0, 0, 0);
+        height: 360px;
+        flex-grow: 1;
+        flex-basis: 50;
+        width: 50%;
+        float: left;
+        color: white;
+
+    }
+
+    .recommended {
+        background-color: rgb(255, 255, 255);
+        height: 360px;
+        flex-grow: 1;
+        flex-basis: 50;
+        width: 50%;
+        float: right;
+    }
+
+    .checkout h2 {
+        font-size: 35px;
+        margin: 38px;
+        margin-left: 55px;
+    }
+
+    .checkout-container {
+        width: 275px;
+        height: 170px;
+        margin: 10px 0 10px 40px;
+    }
+
+    .checkout h5 {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .checkout-button {
+        margin-left: 200px;
+        font-size: 15px;
+        padding: 4px 14px;
+    }
+
+
+    .recommended h2 {
+        font-size: 30px;
+        margin: 15px;
+    }
+
+    .recommended .img {
+        height: 135px;
+        width: 100px;
+        margin-left: 15px;
+    }
+
+    .img img {
+
+        height: 135px;
+        width: 100px;
+    }
+
+
+    .recommended .details {
+        margin-right: 60px;
+    }
+
+    .details h5 {
+        margin-top: 0px;
+        font-size: 20px;
+    }
+
+    .details h6 {
+        font-size: 15px;
+    }
+
+    .details p {
+        font-size: 15px;
+    }
+
+    .add-to-cart {
+        padding: 7px 13px;
+    }
+
+}
+
+@media (min-width:771px) and (max-width:820px) {
+    .cart-text h2 {
+        margin-left: 55px;
+    }
+
+    .container {
+        margin: 40px;
+    }
+
+    .item-box1,
+    .item-box2,
+    .item-box3 {
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    .text {
+        margin-left: 136px;
+    }
+
+    .item-name h6 {
+        font-size: 18px;
+    }
+
+    .item-type h6 {
+        font-size: 14px;
+        margin-left: 22px;
+    }
+
+    .price {
+
+        margin-left: 316px;
+    }
+
+    .item-btns {
+        margin-left: 395px;
+    }
+
+    .available {
+        padding: 6px 11px;
+        font-size: 14px;
+    }
+
+    .buy-now {
+        padding: 6px 11px;
+        font-size: 14px;
+    }
+
+    .tick {
+        margin-left: 685px;
+        margin-top: 15px;
+    }
+
+    #cross {
+        margin-left: 685px;
+        margin-top: 110px;
+    }
+
+    .clear-all {
+        margin-left: 820px;
+    }
+
+    .checkout {
+        height: 534px;
+    }
+
+    .recommended {
+        height: 534px;
+    }
+
+    .checkout h2 {
+        margin-left: 36px;
+        font-size: 38px;
+    }
+
+    .checkout-container {
+        margin-left: 45px;
+        width: 315px;
+    }
+
+    .checkout-button {
+        padding: 6px 21px;
+        margin-left: 223px;
+    }
+
+    .recommended h2 {
+        font-size: 38px;
+        margin: 40px;
+        margin-left: 25px;
+    }
+
+    .recommended .img {
+        height: 235px;
+        width: 182px;
+        margin-left: 25px;
+    }
+
+    .img img {
+        height: 235px;
+        width: 182px;
+    }
+
+    .recommended .details {
+        float: right;
+        margin-right: 5px;
+    }
+
+    .details h5 {
+        font-size: 22px;
+    }
+
+    .details h6 {
+        font-size: 18px;
+    }
+
+    .details p {
+        font-size: 17px;
+    }
+
+    .add-to-cart {
+        padding: 6px 21px;
+        margin-left: 3px;
+    }
+}
+
+@media (min-width: 821px) and (max-width: 854px) {}
+
+@media (min-width:821px) and (max-width:1024px) {
+
+    .cart-text h2 {
+        margin-left: 55px;
+    }
+
+    .container {
+        margin: 40px;
+    }
+
+    .item-box1,
+    .item-box2,
+    .item-box3 {
+        margin-left: 20px;
+        width: 100%;
+    }
+
+    .img1,
+    .img2,
+    .img3{
+        margin-left: 50px;
+    }
+
+    .text{
+        margin-left: 210px;
+    }
+    .item-name h6 {
+        font-size: 16px;
+    }
+
+    .item-type h6 {
+        font-size: 12px;
+    }
+
+    .price {
+        margin-left: 377px;
+        font-size: 18px;
+    }
+
+    .item-btns {
+        margin-left: 466px;
+    }
+
+    .available {
+        padding: 8px 20px;
+        font-size: 11px;
+    }
+
+    .buy-now {
+        padding: 8px 28px;
+        font-size: 11px;
+    }
+
+    .tick {
+        margin-left: 790px;
+    }
+
+    #cross {
+        margin-left: 850px;
+    }
+
+    .clear-all {
+        margin-left: 710px;
+        font-size: 14px;
+    }
+
+    .checkout {
+        height: 618px;
+    }
+
+    .recommended {
+        height: 618px;
+    }
+
+    .checkout h2 {
+        margin-left: 65px;
+        font-size: 40px;
+    }
+
+    .checkout-container {
+        margin-left: 60px;
+        width: 350px;
+    }
+
+    .checkout-button {
+        margin-left: 270px;
+        padding: 8px 18px;
+        font-size: 16px;
+    }
+
+
+    .recommended h2 {
+        font-size: 40px;
+    }
+
+    .recommended .img {
+        height: 226px;
+        width: 175px;
+        margin-left: 40px;
+    }
+
+    .img img {
+        height: 226px;
+        width: 175px;
+    }
+
+    .recommended .details {
+        float: right;
+        margin-right: 30px;
+    }
+
+    .details h5 {
+        font-size: 22px;
+    }
+
+    .details p {
+        font-size: 18px;
+    }
+}
+
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+
+}
