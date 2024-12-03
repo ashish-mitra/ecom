@@ -10,6 +10,30 @@
     color: black;
 }
 
+.animate-block-1{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff5757;
+    z-index: 999;
+}
+
+.animate-block-2{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff5757;
+    display: flex;
+    z-index: 999;
+
+}
+
+
 ::selection {
     color: #ffffff;
     background: #ff5757;
