@@ -136,6 +136,11 @@ def view_cart(request):
     })
 
 
+def clearall(request):
+    cart = get_object_or_404(Cart, user=request.user)
+    cart.cartitem_set.all().delete()
+    return redirect('view_cart')
+
 def checkout(request):
     cart = get_object_or_404(Cart, user=request.user)
     cart_items = cart.cartitem_set.all()

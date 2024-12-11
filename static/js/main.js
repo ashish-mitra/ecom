@@ -1,31 +1,32 @@
-const tl = gsap.timeline()
+const tl = gsap.timeline({ delay: 1 });
 
-
-tl.to(".animate-block-1",{
-    // opacity:0,
-    delay:0.8,
-    x : 2000,
-    duration:8,
-    ease: "power3.out"
-}, 0)
-
- .to(".animate-block-2",{
-    // opacity:0,
-    delay:0.8,
-    x : -2000,
-    duration:8,
-    ease: "power3.out"
-}, 0);
-
-
-
-tl.from(".hero-section",{
-    delay:1.6,
-    opacity:0,
-    y : 200,
-    duration:1,
+tl.from(".hero-text", {
+    opacity: 0,
+    y: 200,
+    duration: 1,
     ease: "power2.out"
-}, 1);
+}, 0.5); 
+
+tl.from(".hero-img-1", {
+    y: 200,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+}, 1.5);
+
+tl.from(".hero-img-2", {
+    y: -500,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+}, 2.5);
+
+tl.from(".hero-img-3", {
+    y: 400,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+}, 3.5);
 
 gsap.from(".card1", {
     opacity:0,
@@ -38,7 +39,7 @@ gsap.from(".card1", {
         // markers: true,
         start: "top 70%",
         end: "top 50%",
-        scrub:3,
+        // scrub:3,
         // pin:true
     }
 })
@@ -54,7 +55,7 @@ gsap.from(".card2", {
         // markers: true,
         start: "top 70%",
         end: "top 50%",
-        scrub:3,
+        // scrub:3,
         // pin:true
     }
 })
