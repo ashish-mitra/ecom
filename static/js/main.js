@@ -1,4 +1,4 @@
-const tl = gsap.timeline({ delay: 1 });
+const tl = gsap.timeline();
 
 tl.from(".hero-text", {
     opacity: 0,
@@ -64,14 +64,17 @@ gsap.from("#red", {
     opacity:0,
     scale : 0.4,
     ease: "power2.out",
+    
     scrollTrigger:{
         trigger:"#red",
         scroller :"body", 
         // markers: true,
         start: "top 80%",
         end: "top 30%",
-        scrub:4,
+        scrub:3,
         // pin:true
+        // stagger: 0.1,
+        
     }
 
 })

@@ -39,7 +39,8 @@ def search_paintings(request):
 
 def home(request):
     # messages.success(request, "welcome to home")
-    return render(request, "home.html")
+    new= Painting.objects.filter(is_new = True)
+    return render(request, "home.html", {'new': new})
 
 
 def about(request):
@@ -92,7 +93,7 @@ def signup_user(request):
 
 
 def base(request):
-    return render(request, "based.html")
+    return render(request, "base.html")
 
 def product(request, pk):
     painting = Painting.objects.get(id = pk)
