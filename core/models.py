@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
 from django.contrib.auth.models import User
+import random
+import string
 
 # Create your models here
 
@@ -44,8 +46,27 @@ class CartItem(models.Model):
         return self.quantity * self.painting.price
     
 
+# class Order(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     date_ordered = models.DateTimeField(auto_now_add=True)
+#     complete = models.BooleanField(default=False)
+
+#     # Shipping address fields
+#     shipping_address = models.CharField(max_length=255)
+#     shipping_city = models.CharField(max_length=100)
+#     shipping_state = models.CharField(max_length=100)
+#     shipping_zip = models.CharField(max_length=20)
+
+#     def __str__(self):
+#         return f"Order {self.id} by {self.user.username}"
+
+#     def get_cart_total(self):
+#         return sum(item.get_total() for item in self.orderitem_set.all())
+
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_id = models.CharField(max_length=20, unique=True, editable=False)  # Unique order ID
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
 
@@ -56,10 +77,19 @@ class Order(models.Model):
     shipping_zip = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"Order {self.id} by {self.user.username}"
+        return f"Order {self.order_id} by {self.user.username}"
 
     def get_cart_total(self):
         return sum(item.get_total() for item in self.orderitem_set.all())
+
+    def save(self, *args, **kwargs):
+        if not self.order_id:
+            self.order_id = self.generate_order_id()
+        super().save(*args, **kwargs)
+
+    @staticmethod
+    def generate_order_id():
+        return ''.join(random.choices(string.digits, k=15))
 
 
 class OrderItem(models.Model):
@@ -72,3 +102,5 @@ class OrderItem(models.Model):
 
     def get_total(self):
         return self.painting.price * self.quantity
+
+
