@@ -24,6 +24,13 @@ class Painting(models.Model):
     is_new = models.BooleanField(default=False)
     is_selling = models.BooleanField(default=False)
 
+    seller = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        limit_choices_to={'profile__is_seller': True},
+        related_name='paintings'
+    )
+
     def __str__(self):
         return self.title
     
@@ -48,6 +55,7 @@ class CartItem(models.Model):
 
 # class Order(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     order_id = models.CharField(max_length=20, unique=True, editable=False)  # Unique order ID
 #     date_ordered = models.DateTimeField(auto_now_add=True)
 #     complete = models.BooleanField(default=False)
 
@@ -58,17 +66,40 @@ class CartItem(models.Model):
 #     shipping_zip = models.CharField(max_length=20)
 
 #     def __str__(self):
-#         return f"Order {self.id} by {self.user.username}"
+#         return f"Order {self.order_id} by {self.user.username}"
 
 #     def get_cart_total(self):
 #         return sum(item.get_total() for item in self.orderitem_set.all())
 
+#     def save(self, *args, **kwargs):
+#         if not self.order_id:
+#             self.order_id = self.generate_order_id()
+#         super().save(*args, **kwargs)
+
+#     @staticmethod
+#     def generate_order_id():
+#         return ''.join(random.choices(string.digits, k=15))
 
 class Order(models.Model):
+    STATUS_CHOICES = [
+        ('Placed', 'Placed'),
+        ('Received', 'Received'),
+        ('Shipped', 'Shipped'),
+        ('Delivered', 'Delivered'),
+        ('Cancelled', 'Cancelled')
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    order_id = models.CharField(max_length=20, unique=True, editable=False)  # Unique order ID
-    date_ordered = models.DateTimeField(auto_now_add=True)
+    order_id = models.CharField(max_length=20, unique=True, editable=False)  
+    date_ordered = models.DateField(auto_now_add=True)
     complete = models.BooleanField(default=False)
+
+    # New field to track the order status
+    status = models.CharField(
+        max_length=20, 
+        choices=STATUS_CHOICES, 
+        default='Placed'  # Default status is "Placed" when an order is created
+    )
 
     # Shipping address fields
     shipping_address = models.CharField(max_length=255)
@@ -77,7 +108,7 @@ class Order(models.Model):
     shipping_zip = models.CharField(max_length=20)
 
     def __str__(self):
-        return f"Order {self.order_id} by {self.user.username}"
+        return f"Order {self.order_id} by {self.user.username} - {self.status}"
 
     def get_cart_total(self):
         return sum(item.get_total() for item in self.orderitem_set.all())
@@ -92,6 +123,7 @@ class Order(models.Model):
         return ''.join(random.choices(string.digits, k=15))
 
 
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     painting = models.ForeignKey(Painting, on_delete=models.CASCADE)
@@ -102,5 +134,18 @@ class OrderItem(models.Model):
 
     def get_total(self):
         return self.painting.price * self.quantity
+
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    is_seller = models.BooleanField(default=False)
+    display_name = models.CharField(max_length=255, unique=True)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
 
 

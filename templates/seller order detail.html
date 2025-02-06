@@ -1,0 +1,37 @@
+{% extends "sellar dashboard.html" %}
+
+{% block dasboard-content %}
+
+<h2>Order Details - {{ order.order_id }}</h2>
+
+<p>Customer: {{ order.user.username }}</p>
+<p>Date Ordered: {{ order.date_ordered }}</p>
+<p>Status: {{ order.status }}</p>
+
+<h3>Ordered Paintings</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Painting</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in order_items %}
+        <tr>
+            <td>{{ item.painting.title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.painting.price }}</td>
+            <td>₹{{ item.get_total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p><strong>Total Amount:</strong> ₹{{ order.get_cart_total }}</p>
+
+{% endblock %}
+
+

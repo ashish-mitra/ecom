@@ -29,6 +29,15 @@ urlpatterns = [
     path('logout/', views.logout_user , name="logout" ),
     path('signup/', views.signup_user , name="signup" ),
     path('profile/', views.profile, name='profile'),
+    path('seller_dashboard/', views.seller_dashboard, name='seller_dashboard'),
+    path('register_seller/', views.register_seller, name='register_seller'),
+    path('seller_product/', views.seller_product, name='seller_product'),
+    path('seller/orders/', views.seller_orders, name='seller_orders'),
+    path('seller/orders/<int:order_id>/', views.seller_order_detail, name='seller_order_detail'),
+
+    path('delete-painting/<int:painting_id>/', views.delete_painting, name='delete_painting'),
+
+
 
     path('search/', views.search_paintings , name="search_paintings" ),
 
@@ -47,6 +56,9 @@ urlpatterns = [
     path('order_confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
     path('orders/', views.view_orders, name='view_orders'),
     path('buy-now/<int:painting_id>/', views.direct_order, name='direct_buy'),
+    path('order/cancel/<int:order_id>/', views.cancel_order, name='cancel_order'),
+
+    
     
 ]+ static(settings. MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

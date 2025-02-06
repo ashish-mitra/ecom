@@ -91,29 +91,58 @@
                     <div class="btns">
 
                         {% if user.is_authenticated %}
-                        <!-- <button class="login-btn log"><a href="{% url 'profile' %}">profile</a></button>
-                    <button class="login-btn"><a href="{% url 'view_cart' %}">cart</a></button> -->
+                 
 
-                        <a href="{% url 'profile' %}">
-                            <div class="x">
-                                <div class="profile-desk">
-                                    <i class="fa-regular fa-user"></i>
+                      
+                            {% if request.user.is_authenticated and request.user.profile.is_seller %}
 
-
-                                </div>
-                                <a href="{% url 'profile' %}">profile</a>
-                            </div>
-                        </a>
-
-                        <a href="{% url 'view_cart' %}">
-                            <div class="x">
-                                <div class="profile-desk">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-
-                                </div>
-                                <a href="{% url 'view_cart' %}">cart</a>
-                            </div>
-                        </a>
+                            <a href="{% url 'seller_dashboard' %}">
+                              <div class="x">
+                                  <div class="profile-desk">
+                                      <i class="fa-regular fa-user"></i>
+  
+  
+                                  </div>
+                                  <a href="{% url 'seller_dashboard' %}">db</a>
+                              </div>
+                          </a>
+  
+                          <a href="{% url 'seller_dashboard' %}">
+                              <div class="x">
+                                  <div class="profile-desk">
+                                      <i class="fa-solid fa-cart-shopping"></i>
+  
+                                  </div>
+                                  <a href="{% url 'seller_dashboard' %}">order</a>
+                              </div>
+                          </a>
+  
+  
+                                
+                            {% else %}
+                            <a href="{% url 'profile' %}">
+                              <div class="x">
+                                  <div class="profile-desk">
+                                      <i class="fa-regular fa-user"></i>
+  
+  
+                                  </div>
+                                  <a href="{% url 'profile' %}">profile</a>
+                              </div>
+                          </a>
+  
+                          <a href="{% url 'view_cart' %}">
+                              <div class="x">
+                                  <div class="profile-desk">
+                                      <i class="fa-solid fa-cart-shopping"></i>
+  
+                                  </div>
+                                  <a href="{% url 'view_cart' %}">cart</a>
+                              </div>
+                          </a>
+  
+  
+                            {% endif %}
 
                         {% else %}
                         <button class="login-btn log"><a href="{% url 'login' %}">LOGIN</a></button>

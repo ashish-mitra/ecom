@@ -1,3 +1,4 @@
+from django.http import HttpResponseForbidden
 from django.shortcuts import render , get_object_or_404, redirect
 from .models import Painting, Category, Cart, CartItem, Order, OrderItem
 from django.db.models import Q
@@ -5,13 +6,49 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from .models import Profile
 # Create your views here.
 
 
 @login_required
 def profile(request):
     return render(request, 'user dashboard.html', {'user': request.user})
+
+# @login_required
+# def seller_dashboard(request):
+#     return render(request, 'sellar dashboard.html', {'user': request.user})
+
+
+
+@login_required
+def seller_dashboard(request):
+
+    if hasattr(request.user, 'profile') and request.user.profile.is_seller:
+
+
+        listed_paintings = Painting.objects.filter(seller=request.user)
+        listing_no = listed_paintings.count()   
+
+        seller = request.user 
+        # ordered_items = Order.objects.filter(orderitem__painting__seller=seller).distinct()
+
+        orders = Order.objects.filter(orderitem__painting__seller=seller, status="Placed").distinct()
+        
+        orders_no = orders.count()
+
+        return render(request, 'sellar dashboard.html', {
+            'listed_paintings': listed_paintings,
+            'orders':orders,
+            'listing_no':listing_no,
+            'orders_no':orders_no,
+
+        })
+    
+
+    return HttpResponseForbidden("You are not authorized to access this page.")
+
+
+
 
 def category(request, cat):
     
@@ -40,25 +77,47 @@ def search_paintings(request):
 def home(request):
     # messages.success(request, "welcome to home")
     new= Painting.objects.filter(is_new = True)
-    return render(request, "home.html", {'new': new})
+    return render(request, "home.html", {'new': new , 'user': request.user})
 
 
 def about(request):
     return render(request, "about.html")
 
 
+# def login_user(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username= username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return render(request, "user dashboard.html" , {'user':user})
+#         else:
+#             return redirect('login')
+#     else:
+#         return render(request, "login.html")
+
+
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username= username, password=password)
+        user = authenticate(request, username=username, password=password)
+        
         if user is not None:
             login(request, user)
-            return render(request, "user dashboard.html" , {'user':user})
+
+            if hasattr(user, 'profile') and user.profile.is_seller:  
+                # return render(request, "sellar dashboard.html" , {'user':user})
+                return redirect(seller_dashboard)
+
+            else:
+                return render(request, "user dashboard.html" , {'user':user})
         else:
-            return redirect('login')
-    else:
-        return render(request, "login.html")
+            messages.error(request, "Invalid username or password.")
+            return redirect('login')  
+    return render(request, "login.html")
+
 
 
     
@@ -90,6 +149,34 @@ def signup_user(request):
             messages.error(request, "Passwords do not match.")
     
     return render(request, 'signup.html')
+
+
+
+def register_seller(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        display_name = request.POST.get('display_name')
+        
+        if password == confirm_password:
+            if not User.objects.filter(username=username).exists():
+                if not Profile.objects.filter(display_name=display_name).exists():
+                    user = User.objects.create_user(username=username, email=email, password=password)
+                    Profile.objects.create(user=user, is_seller=True, display_name=display_name)
+                    login(request, user)
+                    return redirect('home')
+                else:
+                    return render(request, 'register_seller.html', {'error': 'Display name already taken.'})
+            else:
+                return render(request, 'register_seller.html', {'error': 'Username already exists.'})
+        else:
+            return render(request, 'register_seller.html', {'error': 'Passwords do not match.'})
+    
+    return render(request, 'register_seller.html')
+
+
 
 
 def base(request):
@@ -185,12 +272,19 @@ def order_confirmation(request, order_id):
     
     return render(request, 'order_confirmation.html', {'order': order, 'order_items': order_items})
 
+# @login_required
+# def view_orders(request):
+    
+#     orders = Order.objects.filter(user=request.user).order_by('-date_ordered')
+    
+#     return render(request, 'orders.html', {'orders': orders})
+
 @login_required
 def view_orders(request):
-    
     orders = Order.objects.filter(user=request.user).order_by('-date_ordered')
     
     return render(request, 'orders.html', {'orders': orders})
+
 
 
 @login_required
@@ -226,3 +320,95 @@ def direct_order(request, painting_id):
         return redirect('order_confirmation', order_id=order.id)
 
     return render(request, 'direct_order.html', {'painting': painting})
+
+
+
+
+
+
+@login_required
+def cancel_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+
+    if order.status in ['Placed', 'Received']:  # Can be cancelled only if not shipped
+        order.status = 'Cancelled'
+        order.save()
+        messages.success(request, "Your order has been cancelled successfully.")
+    else:
+        messages.error(request, "You cannot cancel this order as it is already shipped or delivered.")
+
+    return redirect('view_orders')
+
+
+
+
+@login_required
+def seller_product(request):
+    if hasattr(request.user, 'profile') and request.user.profile.is_seller:
+        if request.method == 'POST':
+            title = request.POST['title']
+            description = request.POST['description']
+            category_id = request.POST['category']
+            image = request.FILES['image']
+            price = request.POST['price']
+
+            category = get_object_or_404(Category, id=category_id)
+
+            painting = Painting.objects.create(
+                title=title,
+                description=description,
+                category=category,
+                image=image,
+                price=price,
+                seller=request.user,
+                is_selling=True
+            )
+            return redirect('seller_product')
+
+        listed_paintings = Painting.objects.filter(seller=request.user)
+
+        categories = Category.objects.all()
+        return render(request, 'seller product.html', {'categories': categories, 'listed_paintings': listed_paintings,})
+
+        
+    return HttpResponseForbidden("You are not authorized to access this page.")
+
+
+
+@login_required
+def delete_painting(request, painting_id):
+    painting = get_object_or_404(Painting, id=painting_id, seller=request.user) 
+    painting.delete()
+    messages.success(request, "Painting deleted successfully.")
+    return redirect('seller_product') 
+
+
+
+
+@login_required
+def seller_orders(request):
+    seller = request.user  
+
+    orders = Order.objects.filter(orderitem__painting__seller=seller).distinct()
+
+    context = {
+        'orders': orders
+    }
+    return render(request, 'seller orders.html', context)
+
+
+@login_required
+def seller_order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    
+
+    seller_paintings = order.orderitem_set.filter(painting__seller=request.user)
+
+    if not seller_paintings.exists():
+        return HttpResponseForbidden("You do not have permission to view this order.")
+
+    context = {
+        'order': order,
+        'order_items': seller_paintings
+    }
+    return render(request, 'seller order detail.html', context)
