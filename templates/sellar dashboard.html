@@ -55,6 +55,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dashboard</title>
     <link rel="stylesheet" href="/static/css/seller-dashboard.css">
+    {% block seller-css %}
+    {% endblock %}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -139,7 +142,7 @@
                                 <td>{{ painting.id}}</td>
                                 <td>{{ painting.title}}</td>
                                 <td>{{ painting.category}}</td>
-                                <td>{{ painting.price}}</td>
+                                <td>₹{{ painting.price}}</td>
                             </tr>
                             {% empty %}
                             <td colspan="4">No Listings yet.</td>
@@ -179,7 +182,7 @@
                                 <td>{{ order.id}}</td>
                                 <td>{{ order.user.username }}</td>
                                 <td>{{ order.shipping_state }}</td>
-                                <td>{{ order.get_cart_total }}</td>
+                                <td>₹{{ order.get_cart_total }}</td>
                             </tr>
                             {% empty %}
                             <td colspan="4">No orders yet.</td>

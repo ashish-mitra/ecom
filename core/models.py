@@ -83,7 +83,6 @@ class CartItem(models.Model):
 class Order(models.Model):
     STATUS_CHOICES = [
         ('Placed', 'Placed'),
-        ('Received', 'Received'),
         ('Shipped', 'Shipped'),
         ('Delivered', 'Delivered'),
         ('Cancelled', 'Cancelled')

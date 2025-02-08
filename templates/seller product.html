@@ -64,7 +64,7 @@
         <div class="text-part">
             <h4>{{ painting.title }}</h4>
             <h5>{{ painting.category }}</h5>
-            <p>${{ painting.price }}</p>
+            <p>₹{{ painting.price }}</p>
             <div class="buttons">
                 <a href="{% url 'product' pk=painting.id %}"> <button class="v">view</button></a>
                 <a href="{% url 'delete_painting' painting.id %}"> <button class="r">remove</button></a>
