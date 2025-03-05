@@ -7,7 +7,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.core.mail import send_mail
+from django.conf import settings
+from datetime import datetime 
 # Create your views here.
+
+
+
 
 
 @login_required
@@ -82,6 +88,45 @@ def home(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+def contact(request):
+    context = {}
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+
+        if email and name and message:
+            
+            current_time = datetime.now().strftime("%d-%m-%Y %H:%M:%S") 
+
+            email_message = (
+                f"Date & Time: {current_time}\n"
+                f"Name: {name}\n"
+                f"Email: {email}\n"
+                f"Phone: {phone}\n\n"
+                f"Message:\n{message}"
+            )
+
+            try:
+                send_mail(
+                    subject="E-commerce Contact Form",
+                    message=email_message,
+                    from_email=email, 
+                    recipient_list=[settings.EMAIL_HOST_USER], 
+                    fail_silently=False
+                )
+                context['result'] = 'Email sent successfully'
+            except Exception as e:
+                context['result'] = f'Error sending email: {e}'
+        else:
+            context['result'] = 'All fields are required'
+
+    return render(request, "contact.html", context)
+
 
 
 # def login_user(request):
