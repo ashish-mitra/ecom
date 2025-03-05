@@ -50,8 +50,7 @@
     <!-- <link rel="stylesheet" href="/static/css/searches.css"> -->
 
     {% block page_css %}
-    <!-- <link rel="stylesheet" href="/static/css/category.css"> -->
-    <!-- <link rel="stylesheet" href="/static/css/category.css"> -->
+
     {% endblock %}
 
 
@@ -64,11 +63,24 @@
 
                 <div class="menu-list">
                     <a href="{% url 'home' %}">HOME</a>
-                    <a href="#">CATEGORIES</a>
+                    
+                      <div id="category_btn" class="category_btn" >CATEGORIES
+
+                        <div id="category_menu" class="category_menu">
+                          <!-- <a href="#">hello</a> -->
+                          {% for at in categorys %}
+                          <a href="{% url 'category' pk=at.id %}">{{at.name}}</a>
+                          {% endfor %}
+                        </div>
+  
+                      </div>
+                        
+
                     <a href="{% url 'about' %}">ABOUT</a>
                     <a href="{% url 'contact' %}">CONTACT US</a>
                 </div>
 
+                
 
 
                 <div class="icon">
@@ -171,9 +183,14 @@
 
     <div id="m-links" class="m-link">
         <a href="{% url 'home' %}">HOME</a>
-        <a href="#">CATEGORY</a>
-        <a href="#">ABOUT</a>
-        <a href="#">CONTACT US</a>
+        <a  id="category_btn" class="category_btn">CATEGORIES
+          <div id="category_menu" class="category_menu">
+            <a href="#">hello</a>
+          </div>
+        </a>
+                     
+        <a href="{% url 'about' %}">ABOUT</a>
+        <a href="{% url 'contact' %}">CONTACT US</a>
 
     </div>
 
@@ -382,6 +399,8 @@
         const p_links = document.getElementById('p-links');
         const m_menu = document.getElementById('m-menu');
         const m_links = document.getElementById('m-links');
+        const category_btn = document.getElementById('category_btn')
+        const category_menu = document.getElementById('category_menu')
 
         p_menu.addEventListener('click', () => {
             p_links.classList.toggle('open');
@@ -392,6 +411,12 @@
         m_menu.addEventListener('click', () => {
             m_links.classList.toggle('mopen');
         });
+
+
+        category_btn.addEventListener('click', () => {
+            category_menu.classList.toggle('visbile');
+        });
+
     </script>
 
    

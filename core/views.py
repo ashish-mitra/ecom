@@ -56,15 +56,16 @@ def seller_dashboard(request):
 
 
 
-def category(request, cat):
+def category(request, pk):
     
-    try:
-        category = Category.objects.get(name=cat)
-        painting = Painting.objects.filter(category=category )
+    categorys = Category.objects.all()
+    
+    category = Category.objects.get(id = pk)
+    
+    painting = Painting.objects.filter(category=category )
    
-        return render(request, "category.html", {'painting':painting, 'category':category})
-    except:
-        return redirect('home')
+    return render(request, "category.html", {'painting':painting, 'category':category, 'categorys':categorys})
+    
 
 
 def search_paintings(request):
@@ -82,15 +83,19 @@ def search_paintings(request):
 
 def home(request):
     # messages.success(request, "welcome to home")
+
+    categorys = Category.objects.all()
     new= Painting.objects.filter(is_new = True)
-    return render(request, "home.html", {'new': new , 'user': request.user})
+    return render(request, "home.html", {'new': new , 'user': request.user, 'categorys':categorys})
 
 
 def about(request):
-    return render(request, "about.html")
+    categorys = Category.objects.all()
+    return render(request, "about.html",{'categorys':categorys})
 
 
 def contact(request):
+    categorys = Category.objects.all()
     context = {}
 
     if request.method == 'POST':
@@ -125,7 +130,7 @@ def contact(request):
         else:
             context['result'] = 'All fields are required'
 
-    return render(request, "contact.html", context)
+    return render(request, "contact.html", {'categorys':categorys})
 
 
 
@@ -229,7 +234,6 @@ def base(request):
 
 def product(request, pk):
     painting = Painting.objects.get(id = pk)
-
     return render(request, "product.html", {'painting': painting})
 
 @login_required
