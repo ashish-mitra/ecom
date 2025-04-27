@@ -17,7 +17,7 @@ textarea {
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
-  background-color: #fafafa;
+  background-color: #ffffff;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -71,12 +71,12 @@ textarea {
   left: -13px;
 }
 
-form {
+/* form {
   padding: 2.3rem 2.2rem;
   z-index: 10;
   overflow: hidden;
   position: relative;
-}
+} */
 
 .title {
   color: #fff;

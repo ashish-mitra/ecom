@@ -42,6 +42,8 @@
         <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/forms@0.5.10/src/index.min.js"></script>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <!-- custom css  -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -96,7 +98,7 @@
 
                         <form method="GET" action="{% url 'search_paintings' %}">
                             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input type="text" name="q" placeholder="Search for paintings...">
+                            <input id="search-input" type="text" name="q" placeholder="Search for paintings...">
 
                         </form>
                     </div>

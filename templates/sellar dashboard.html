@@ -84,7 +84,7 @@
 
             <div class="acc-sec">
                 <div>
-                    <a href="#"><button>View Profile</button></a>
+                    <a href="{% url 'profile_update' %}"><button>Edit Profile</button></a>
                 <a href="{% url 'logout' %}"><button>Logout</button></a>
                 </div>
 
@@ -215,7 +215,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
 
@@ -245,7 +245,85 @@
 
 
 
-    </script>
+    </script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Get data passed from Django view
+    const chartLabels = JSON.parse('{{ chart_labels|safe }}');
+    const chartData = JSON.parse('{{ chart_data|safe }}');
+
+    // Get the canvas context
+    const lineCtx = document.getElementById('lineChart').getContext('2d');
+
+    // Create the chart
+    const lineChart = new Chart(lineCtx, {
+        type: 'line',
+        data: {
+            labels: chartLabels, // e.g. ["January", "February", ...]
+            datasets: [{
+                label: 'Monthly Revenue (₹)',
+                data: chartData, // e.g. [1500, 2000, 3500, ...]
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                tension: 0.3,
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                pointRadius: 5,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Monthly Revenue for Your Paintings',
+                    font: {
+                        size: 18
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ` ₹${context.parsed.y}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Revenue (₹)',
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month',
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
 
 
 </body>

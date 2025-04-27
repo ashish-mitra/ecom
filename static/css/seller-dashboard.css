@@ -365,7 +365,11 @@
     font-weight: 500;
 }
 
-.add__painting input{
+/* .add__painting input{
+    display: none;
+} */
+
+#add-painting{
     display: none;
 }
 
@@ -491,7 +495,7 @@
     justify-content: space-between;
 }
 
-.action_btns :nth-child(2) {
+.action_btns :nth-child(2):hover {
     width: 100px;
     height: 30px;
     display: flex;
@@ -501,9 +505,9 @@
     text-decoration: none;
     border: 1px solid black;
     color: #000;
-}
+} 
 
-.action_btns :nth-child(3) {
+.action_btns :nth-child(2) {
     width: 100px;
     height: 30px;
     display: flex;

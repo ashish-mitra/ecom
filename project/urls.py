@@ -30,11 +30,16 @@ urlpatterns = [
     path('logout/', views.logout_user , name="logout" ),
     path('signup/', views.signup_user , name="signup" ),
     path('profile/', views.profile, name='profile'),
+
+    path('profile_update/', views.profile_update, name='profile_update'),
+
     path('seller_dashboard/', views.seller_dashboard, name='seller_dashboard'),
     path('register_seller/', views.register_seller, name='register_seller'),
     path('seller_product/', views.seller_product, name='seller_product'),
     path('seller/orders/', views.seller_orders, name='seller_orders'),
     path('seller/orders/<int:order_id>/', views.seller_order_detail, name='seller_order_detail'),
+    path('seller/customers/', views.seller_customer, name='seller_customers'),
+
 
     path('delete-painting/<int:painting_id>/', views.delete_painting, name='delete_painting'),
 
@@ -55,9 +60,17 @@ urlpatterns = [
 
     path('checkout/', views.checkout, name='checkout'),
     path('order_confirmation/<int:order_id>/', views.order_confirmation, name='order_confirmation'),
+    path('order_confirmation_list/', views.order_confirmation_list, name='order_confirmation_list'),
+
+    path('seller/order/<int:order_id>/shipped/', views.mark_as_shipped, name='mark_as_shipped'),
+    path('seller/order/<int:order_id>/delivered/', views.mark_as_delivered, name='mark_as_delivered'),
+
+
     path('orders/', views.view_orders, name='view_orders'),
     path('buy-now/<int:painting_id>/', views.direct_order, name='direct_buy'),
     path('order/cancel/<int:order_id>/', views.cancel_order, name='cancel_order'),
+
+    # path('dashboard/monthly-revenue/', views.monthly_revenue_data, name='monthly_revenue_data'),
 
     
     

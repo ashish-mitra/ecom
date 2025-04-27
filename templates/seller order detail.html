@@ -75,7 +75,7 @@
             <table>
                 <tr>
                     <td>Subtotal</td>
-                    <td>₹{{ order.get_cart_total }}</td>
+                    <td>₹{{ seller_total }}</td>
                 </tr>
                 <tr>
                     <td>Discount</td>
@@ -87,14 +87,19 @@
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td>₹{{ order.get_cart_total }}</td>
+                    <td>₹{{ seller_total }}</td>
                 </tr>
             </table>
 
             <div class="action_btns">
                 <p>Review your orders at a glance in order summary.</p>
-                <a href="#">Cancel</a>
-                <a href="#">Shipped</a>
+                <!-- <a href="#">Cancel</a> -->
+                {% if order.status == "Placed" %}
+                <a href="{% url 'mark_as_shipped' order.id %}">Shipped</a>
+                {% elif order.status == "Shipped" %}
+                <a href="{% url 'mark_as_delivered' order.id %}">Delivered</a>
+
+                {% endif %}
             </div>
 
         </div>

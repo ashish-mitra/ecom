@@ -53,32 +53,7 @@ class CartItem(models.Model):
         return self.quantity * self.painting.price
     
 
-# class Order(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     order_id = models.CharField(max_length=20, unique=True, editable=False)  # Unique order ID
-#     date_ordered = models.DateTimeField(auto_now_add=True)
-#     complete = models.BooleanField(default=False)
 
-#     # Shipping address fields
-#     shipping_address = models.CharField(max_length=255)
-#     shipping_city = models.CharField(max_length=100)
-#     shipping_state = models.CharField(max_length=100)
-#     shipping_zip = models.CharField(max_length=20)
-
-#     def __str__(self):
-#         return f"Order {self.order_id} by {self.user.username}"
-
-#     def get_cart_total(self):
-#         return sum(item.get_total() for item in self.orderitem_set.all())
-
-#     def save(self, *args, **kwargs):
-#         if not self.order_id:
-#             self.order_id = self.generate_order_id()
-#         super().save(*args, **kwargs)
-
-#     @staticmethod
-#     def generate_order_id():
-#         return ''.join(random.choices(string.digits, k=15))
 
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -142,6 +117,7 @@ class Profile(models.Model):
     display_name = models.CharField(max_length=255, unique=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
+
 
     def __str__(self):
         return self.user.username

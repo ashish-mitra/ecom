@@ -11,7 +11,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'poppins';
+
   }
   .container {
     position:relative;
@@ -142,80 +142,9 @@
     }
   
   
-  html{
-      
-    overflow: hidden;
-    overflow-y: scroll;
-  }
+
   
-  header{
-    width: 100vw;
-    height: auto;
-    background-color: white;
-  }
-  
-  nav{
-    display: flex;
-    width: 100%;
-    height: 100px;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  
-  .menu-items{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 40%;
-    height: 100%;
-  }
-  
-  .logo{
-    width: 100px;
-    height: 100%;
-  }
-  
-  .logo img{
-    width: 100%;
-  }
-  
-  .active{
-    font-weight: 600;
-    color: black;
-  }
-  
-  li{
-    list-style: none;
-    color: rgb(80, 82, 83);
-  }
-  
-  li:hover{
-    font-weight: 600;
-    color: black;
-  }
-  
-  .login-btns{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 30%;
-  }
-  
-  .login{
-    padding: 10px 30px;
-    border: 2px solid black;
-    background-color: black;
-    color: white;
-    margin-right: 20px;
-    
-  }
-  
-  .sign-up{
-    padding: 10px 28px;
-    background-color: white;
-    border: 2px solid black;
-  }
+ 
   .imgs{
     display: flex;
     align-items: center;
