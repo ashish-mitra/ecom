@@ -23,6 +23,27 @@ import datetime
 
 # Create your views here.
 
+
+@login_required
+def generate_invoice(request, order_id):
+
+    # Get the order, or return a 404 if not found or if it doesn't belong to the user
+    order = get_object_or_404(Order, order_id=order_id, user=request.user)
+    
+    # Get all order items related to this order
+    order_items = order.orderitem_set.all()
+
+    context = {
+        'order': order,
+        'order_items': order_items,
+    }
+    return render(request, 'invoice_detail.html', context)
+
+
+
+
+
+
 @login_required
 def profile_update(request):
     user = request.user

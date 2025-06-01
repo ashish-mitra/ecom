@@ -1,29 +1,16 @@
 {% extends "base.html" %}
 
+{% block page_css %}
+<link rel="stylesheet" href="/static/css/orders.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
 {% block content %}
-<h1>Your Orders</h1>
-
-<!-- {% if orders %}
-  <ul>
-    {% for order in orders %}
-      <li>
-        <h2>Order ID: {{ order.order_id }} (Date: {{ order.date_ordered }})</h2>
-        <ul>
-          {% for item in order.orderitem_set.all %}
-            <li>{{ item.painting.title }} - ${{ item.painting.price }} x {{ item.quantity }} = ${{ item.get_total }}</li>
-          {% endfor %}
-        </ul>
-        <p>Total: ${{ order.get_cart_total }}</p>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>You have not placed any orders yet.</p>
-{% endif %}
- -->
 
 
- <table>
+
+<!-- 
+<table>
   <thead>
       <tr>
           <th>Order ID</th>
@@ -50,9 +37,71 @@
       </tr>
       {% endfor %}
   </tbody>
-</table>
+</table> -->
+
+
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1><i class="fas fa-receipt"></i> ORDER HISTORY</h1>
+    </header>
+
+    {% if orders %}
+    {% for order in orders %}
+    <div class="order-cards">
+      <!-- Order 1 -->
+      <div class="order-card {{ order.status }}">
+        <div class="order-header">
+          <div>
+            <h2>Order #{{ order.order_id }}</h2>
+            <p class="order-date">Placed on {{ order.date_ordered }}</p>
+          </div>
+          <span class="order-badge">{{ order.status }}</span>
+        </div>
+        {% for item in order.orderitem_set.all %}
+        <div class="order-item">
+          <img src="{{ item.painting.image.url }}" alt="{{ item.painting.title }}" class="product-img">
+          <div class="item-info">
+            <h3 class="product-title">{{ item.painting.title }}</h3>
+            <p class="product-price">₹{{ item.painting.price|floatformat:2 }}</p>
+            <p class="product-quantity">Quantity: 1</p>
+          </div>
+          <button class="btn btn-outline">Track</button>
+        </div>
+        {% endfor %}
+        <div class="order-actions">
+
+          {% if order.status == "Placed" or order.status == "Received" %}
+          <!-- <a href="{% url 'cancel_order' order.id %}" class="btn btn-danger">Cancel</a> -->
+
+
+          <a href="{% url 'cancel_order' order.id %}"><button class="btn btn-text"><i class="fa-solid fa-xmark"></i>
+              Cancel</button></a>
+
+          {% else %}
+          <button disabled class="btn btn-text"><i class="fa-solid fa-xmark"></i> Cancel</button>
+          {% endif %}
+
+          <a href="{% url 'generate_invoice' order_id=order.order_id %}" target="_blank">
+            <button class="btn btn-text"><i class="fas fa-file-invoice"></i> Invoice</button></a>
+          <button class="btn btn-text"><i class="fas fa-question-circle"></i> Help</button>
+        </div>
+      </div>
+
+
+    </div>
+    {% endfor %}
+    {% else %}
+    {# Fallback if 'orders' context variable is not even provided or empty #}
+    <div class="no-orders-message">
+      <p>You have not placed any orders yet.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</body>
+
+
 
 
 {% endblock %}
-
-

@@ -70,6 +70,8 @@ urlpatterns = [
     path('buy-now/<int:painting_id>/', views.direct_order, name='direct_buy'),
     path('order/cancel/<int:order_id>/', views.cancel_order, name='cancel_order'),
 
+    path('orders/<str:order_id>/invoice/', views.generate_invoice, name='generate_invoice'),
+
     # path('dashboard/monthly-revenue/', views.monthly_revenue_data, name='monthly_revenue_data'),
 
     
