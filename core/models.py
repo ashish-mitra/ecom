@@ -9,6 +9,8 @@ import string
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True, default=None )
+    bg_image = models.ImageField(upload_to="bg_images/", default=None, null=True )
+
 
     def __str__(self):
         return self.name
