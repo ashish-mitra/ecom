@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shrikhand&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -6,37 +6,64 @@
 }
 
 .we{
-    height: 640px;
+    height: 480px;
     display: flex;
 }
 
-.left{
-    width: 70%;
-    margin-top: 36px;
-    padding-left: 55px;
+.W-container{
+    position: relative; /* important */
+  height: 450px;
+  width: 100%;
+  overflow: hidden;
+    /* border: 2px solid black; */
 }
 
-.left h1{
-    font-family: "Montserrat";
-    font-size: 142px;
-    position: relative;
-}
 
-.left p{
-    width: 50%;
-    padding-left: 33px;
-    font-size: 18px;
-    font-family: "Nunito";
-}
 
 .image{
-    width: 30%;
-    margin-top: 115px;
+    position: relative;
+    width: 100%;
+    height: 500px; /* adjust as needed */
+    overflow: hidden;
 }
 
-.image img{
-    margin-left: -392px;
-    width: 155%;
+.W-container img{
+     width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.W-container p{
+    font-family: "Cinzel Decorative", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.W-container .overlay{
+    position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+  z-index: 1;
+}
+
+.overlay-text{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Cinzel Decorative", serif;
+  font-size: 80px;
+  font-weight: 500;
+  color: white;
+  z-index: 2;
+  text-align: center;
 }
 
 .do{
@@ -45,12 +72,14 @@
 }
 
 .heading{
-    font-family: "Montserrat";
+    font-family: "Cinzel Decorative", serif;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 80px;
     font-weight: 500;
+    margin-top: 100px;
+
 }
 
 .expl{
@@ -68,7 +97,7 @@
 .expl p{
     padding: 0px 50px;
     font-size: 15px;
-    font-family: "Nunito";
+    font-family: "Merriweather", serif;
 }
 
 .sales{
@@ -154,12 +183,11 @@
     padding: 15px;
     perspective: 100px;
     position: relative;
-    overflow: hidden;
     /* margin-bottom: 100px; */
 }
 
 .slide img{
-    height: 100%;
+    width: 100%;
     transition: transform 1s;
 }
 
@@ -210,4 +238,3 @@
     font-family: "Montserrat";
 
 }
-
