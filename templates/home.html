@@ -71,91 +71,24 @@
 
 
 
-
+{% for p in new %}
   <div class="product-card">
     <div class="img-part">
-      <img src="/media/products_images/goku.jpeg" alt="">
+      <img src="{{p.image.url}}" alt="">
     </div>
     <div class="text-part">
-      <h4>painting</h4>
-      <h5>category</h5>
-      <p>₹price</p>
+      <h4>{{p.title}}</h4>
+      <h5>{{p.category}}</h5>
+      <p>₹{{p.price}}</p>
       <div class="buttons">
-        <a href="#"> <button class="v">view</button></a>
-        <a href="#"> <button class="r">cart</button></a>
+        <a href="{% url 'product' pk=p.id %}"> <button class="v">view</button></a>
+        <a href="{% url 'add_to_cart' p.id %}"> <button class="r">cart</button></a>
       </div>
     </div>
 
   </div>
 
-
-  <div class="product-card">
-    <div class="img-part">
-      <img src="/media/products_images/goku.jpeg" alt="">
-    </div>
-    <div class="text-part">
-      <h4>painting</h4>
-      <h5>category</h5>
-      <p>₹price</p>
-      <div class="buttons">
-        <a href="#"> <button class="v">view</button></a>
-        <a href="#"> <button class="r">cart</button></a>
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-    <div class="img-part">
-      <img src="/media/products_images/goku.jpeg" alt="">
-    </div>
-    <div class="text-part">
-      <h4>painting</h4>
-      <h5>category</h5>
-      <p>₹price</p>
-      <div class="buttons">
-        <a href="#"> <button class="v">view</button></a>
-        <a href="#"> <button class="r">cart</button></a>
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-    <div class="img-part">
-      <img src="/media/products_images/goku.jpeg" alt="">
-    </div>
-    <div class="text-part">
-      <h4>painting</h4>
-      <h5>category</h5>
-      <p>₹price</p>
-      <div class="buttons">
-        <a href="#"> <button class="v">view</button></a>
-        <a href="#"> <button class="r">cart</button></a>
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-    <div class="img-part">
-      <img src="/media/products_images/goku.jpeg" alt="">
-    </div>
-    <div class="text-part">
-      <h4>painting</h4>
-      <h5>category</h5>
-      <p>₹price</p>
-      <div class="buttons">
-        <a href="#"> <button class="v">view</button></a>
-        <a href="#"> <button class="r">cart</button></a>
-      </div>
-    </div>
-
-  </div>
-
+{% endfor %}
 
   <!-- products end here -->
 </div>
@@ -168,20 +101,18 @@
       <div>
         <div class="max-w-lg md:max-w-none">
           <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+           {{ best.title }}
           </h2>
 
           <p class="mt-4 text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
-            architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
-            sequi.
+           {{ best.description }}
           </p>
         </div>
       </div>
 
       <div>
         <img
-          src="https://images.unsplash.com/photo-1731690415686-e68f78e2b5bd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="{{ best.image.url }}"
           alt="" />
       </div>
     </div>
@@ -227,14 +158,12 @@
                   </svg>
                 </div>
 
-                <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                <p class="mt-0.5 text-lg font-medium text-gray-900">Amit Patel</p>
               </div>
             </div>
 
             <p class="mt-4 text-gray-700">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-              consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius
-              accusamus error officiis atque voluptates magnam!
+"What a wonderful way to spend an afternoon! The paintings tell such compelling stories. I especially loved 'Village Life'; it's so charming and detailed, giving you a real sense of community. My kids were captivated by the peacocks in 'Madhubani Peacock' and the elephants in 'Temple Elephants.' It’s a fantastic exhibition for all ages, very educational and visually stunning."
             </p>
           </blockquote>
         </div>
@@ -275,9 +204,8 @@
             </div>
 
             <p class="mt-4 text-gray-700">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-              consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius
-              accusamus error officiis atque voluptates magnam!
+              "I've always been fascinated by Indian art, and this Madhubani exhibition truly exceeded my expectations! 'Mandala Bloom' is absolutely breathtaking with its vibrant colors and intricate details – I could stare at it for hours. And 'Divine Goddess' just radiates such a serene energy. It's clear how much care and tradition goes into each piece. A truly uplifting experience!"
+
             </p>
           </blockquote>
         </div>
@@ -313,14 +241,13 @@
                   </svg>
                 </div>
 
-                <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                <p class="mt-0.5 text-lg font-medium text-gray-900">Neha Singh</p>
               </div>
             </div>
 
             <p class="mt-4 text-gray-700">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-              consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius
-              accusamus error officiis atque voluptates magnam!
+       "I'm an artist myself, and I was incredibly impressed by the precision and vibrancy of these works. The way the artists use bold outlines and fill them with such rich colors is masterful. 'Floral Abstraction' showed a really interesting modern twist on traditional motifs, which I appreciated. This exhibition is a brilliant showcase of Madhubani art's versatility and timeless appeal. Highly inspiring!"
+
             </p>
           </blockquote>
         </div>
@@ -356,14 +283,12 @@
                   </svg>
                 </div>
 
-                <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                <p class="mt-0.5 text-lg font-medium text-gray-900">Rajesh Kumar</p>
               </div>
             </div>
 
             <p class="mt-4 text-gray-700">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-              consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius
-              accusamus error officiis atque voluptates magnam!
+"Absolutely beautiful! Every single painting is a feast for the eyes. The intricate patterns in 'Madhubani Motifs' were just mesmerizing. You can really feel the rich cultural heritage coming through in every stroke. It's not just art; it's a window into a beautiful tradition. I’ve already recommended it to all my friends!"
             </p>
           </blockquote>
         </div>

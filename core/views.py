@@ -19,7 +19,7 @@ from django.http import JsonResponse
 import calendar
 import json
 from collections import OrderedDict
-import datetime
+
 
 # Create your views here.
 
@@ -190,8 +190,9 @@ def home(request):
     # messages.success(request, "welcome to home")
 
     categorys = Category.objects.all()
-    new= Painting.objects.filter(is_new = True)
-    return render(request, "home.html", {'new': new , 'user': request.user, 'categorys':categorys})
+    new= Painting.objects.order_by('?')[:5] 
+    best = Painting.objects.get(title="Serenity by the Lake")
+    return render(request, "home.html", { 'best': best , 'new': new , 'user': request.user, 'categorys':categorys})
 
 
 def about(request):
