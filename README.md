@@ -63,7 +63,7 @@ GitLens
 
 Open VS Code → Terminal → run:
 
-git clone https://github.com/yourusername/painting-ecommerce.git
+git clone https://github.com/ashish-mitra/ecom.git
 cd painting-ecommerce
 
 If you're not using GitHub, just open the folder directly in VS Code.
@@ -88,9 +88,9 @@ source env/bin/activate
 
 📦 4. Install Django & Dependencies
 
-pip install django pillow
+pip install -r requirements.txt
 
-(You can also run pip install -r requirements.txt if it exists)
+(You can also run if it exists)
 
 To save installed packages:
 
